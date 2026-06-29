@@ -13,7 +13,7 @@ export async function createCompany(name: string): Promise<{ error?: string; com
   const slug = `company-${Date.now()}`
   const { data: company, error: companyErr } = await supabase
     .from('companies')
-    .insert({ name: trimmed, slug, fiscal_year_start_month: 1 })
+    .insert({ name: trimmed, slug, fiscal_year_start_month: 1, app_type: 'nichiji' })
     .select().single()
 
   if (companyErr || !company) return { error: `作成に失敗しました: ${companyErr?.message}` }

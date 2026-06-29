@@ -15,7 +15,7 @@ export default async function SettingsPage() {
   if (adminCompanyIds.length === 0) redirect('/')
 
   const { data: companies } = await supabase.from('companies').select('*')
-    .in('id', adminCompanyIds).order('name')
+    .in('id', adminCompanyIds).eq('app_type', 'nichiji').order('name')
 
   // 全ユーザーと全company_usersを取得
   const admin = createAdminClient()
@@ -42,7 +42,7 @@ export default async function SettingsPage() {
 
   // ナビ用に自分が見える全会社
   const { data: myCompanies } = await supabase.from('companies').select('*')
-    .in('id', adminCompanyIds).order('name')
+    .in('id', adminCompanyIds).eq('app_type', 'nichiji').order('name')
 
   return (
     <UserManagementClient

@@ -20,6 +20,7 @@ export default async function HomePage({ searchParams }: Props) {
   const { data: companies } = await supabase
     .from('companies').select('*')
     .in('id', companyIds.length > 0 ? companyIds : ['00000000-0000-0000-0000-000000000000'])
+    .eq('app_type', 'nichiji')
     .order('name')
 
   const currentCompany = companyParam
