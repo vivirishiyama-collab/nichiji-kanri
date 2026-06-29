@@ -77,12 +77,10 @@ export function Header({ companies, currentCompany, onCompanyChange, userEmail }
 
         <div className="flex items-center gap-3">
           {userEmail && <span className="text-sm text-gray-500 hidden sm:inline">{userEmail}</span>}
-          {currentCompany && (
-            <button onClick={() => router.push(`/settings/${currentCompany.id}`)}
-              className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 px-2 py-1 rounded hover:bg-gray-100">
-              <Settings className="w-4 h-4" />メンバー管理
-            </button>
-          )}
+          <button onClick={() => router.push('/settings')}
+            className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 px-2 py-1 rounded hover:bg-gray-100">
+            <Settings className="w-4 h-4" />ユーザー管理
+          </button>
           <button onClick={handleLogout} className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 px-2 py-1 rounded hover:bg-gray-100">
             <LogOut className="w-4 h-4" />ログアウト
           </button>
